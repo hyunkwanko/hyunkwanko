@@ -9,12 +9,11 @@
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" media="screen" href="assets/bootstrap/css/particles.css">
     <link rel="stylesheet" media="screen" href="assets/bootstrap/css/style.css">
-    <link rel="stylesheet" href="assets/bootstrap/css/fakeLoader.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/fakeLoader.css">
 </head>
 
 <!-- particles.js container -->
 <div id="particles-js"></div>
-
 
 <body id="page-top">
     <nav class="navbar navbar-light navbar-expand-md navbar navbar-expand-lg fixed-top" id="mainNav">
@@ -29,7 +28,7 @@
             </div>
         </div>
     </nav>
-    <header class="masthead" style="background-image:url('assets/img/space.jpg');">
+    <header class="masthead">
         <div class="intro-body">
             <div class="container">
                 <div class="row">
@@ -91,20 +90,20 @@
     <script src="assets/js/app.js"></script>
     <script src="assets/js/fakeLoader.min.js"></script>
 
-    <!-- particles -->
+    <!-- Particles -->
     <script>
         particlesJS.load('particles-js', 'assets/particles.json', function() {
             console.log('particles.js loaded - callback');
         });
     </script>
 
+    <!-- Lodaing -->
     <div class="fakeLoader"></div>
 
     <script>
         $(document).ready(function () {
             $.fakeLoader({
-                bgColor: '#000',
-                spinner:"spinner6"
+                spinner:"spinner7",
             });
         });
     </script>
