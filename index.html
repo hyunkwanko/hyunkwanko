@@ -77,6 +77,10 @@
         </div>
     </section>
 
+    <div class="container">
+        <div id="disqus_thread"></div>
+    </div>
+
     <footer>
         <div class="container text-center">
             <p>Copyright ©&nbsp;Brand 2018</p>
@@ -109,5 +113,17 @@
             });
         });
     </script>
+
+    <!-- Disqus -->
+    <script>
+        (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://everyolo.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <script id="dsq-count-scr" src="//everyolo.disqus.com/count.js" async></script>
+
 </body>
 </html>
