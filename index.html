@@ -10,8 +10,9 @@
     <link rel="stylesheet" media="screen" href="assets/bootstrap/css/particles.css">
     <link rel="stylesheet" media="screen" href="assets/bootstrap/css/style.css">
     <link rel="stylesheet" href="assets/bootstrap/css/fakeLoader.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/Footer-Dark.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 </head>
-
 
 <!-- particles.js container -->
 <div id="particles-js"></div>
@@ -20,17 +21,18 @@
     <div class="fakeLoader"></div>
 
     <nav class="navbar navbar-light navbar-expand-md navbar navbar-expand-lg fixed-top" id="mainNav">
-        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#">LOGO</a><button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#" style="color: #000">LOGO</a><button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
                 value="Menu"><i class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link active js-scroll-trigger" href="#about">About</a></li>
-                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link js-scroll-trigger" href="#download">download</a></li>
-                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link js-scroll-trigger" href="#contact">contact</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link active js-scroll-trigger" href="#about" style="color: #000">About</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link js-scroll-trigger" href="#download" style="color: #000">download</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link js-scroll-trigger" href="#contact" style="color: #000">contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+
     <header class="masthead">
         <div class="intro-body">
             <div class="container">
@@ -43,62 +45,57 @@
             </div>
         </div>
     </header>
+
     <section id="about" class="content-section text-center">
-        <div class="container">
+        <div class="container-fluid" style="padding:0;">
             <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <h2>About grayscale</h2>
-                    <p>Grayscale is a free Bootstrap theme. It can be yours right now, simply download the template on&nbsp;<a href="#">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-                    <p>This theme features stock photos by&nbsp;<a href="#">Gratisography</a>&nbsp;along with a custom Google Maps skin courtesy of&nbsp;<a href="#">Snazzy Maps</a>.</p>
-                    <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with SASS and LESS files for easy customization!</p>
+                <div class="col-4" style="padding: 0;">
+                    <img class="thumbnail" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
                 </div>
+                <div class="col-4" style="padding: 0;">
+                        <img class="thumbnail" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
+                    </div>
+                <div class="col-4" style="padding: 0;">
+                        <img class="thumbnail" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
+                    </div>
+            </div>
+            <div class="row">
+                <div class="col-4" style="padding: 0;">
+                        <img class="thumbnail2" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
+                    </div>
+                <div class="col-4" style="padding: 0;">
+                        <img class="thumbnail2" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
+                    </div>
+                <div class="col-4" style="padding: 0;">
+                        <img class="thumbnail2" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
+                    </div>
             </div>
         </div>
     </section>
 
     <!-- <section id="download" class="download-section parallax-window" data-parallax="scroll" data-image-src="assets/img/space.jpg"></section> -->
-    <div class="parallax-window" data-parallax="scroll" data-image-src="assets/img/space.jpg"></div>
+    <div class="parallax-window" data-parallax="scroll" data-image-src="assets/img/laptop.jpg"></div>
 
     <section id="download" class="content-section text-center">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <h2>About grayscale</h2>
-                    <p>Grayscale is a free Bootstrap theme. It can be yours right now, simply download the template on&nbsp;<a href="#">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-                    <p>This theme features stock photos by&nbsp;<a href="#">Gratisography</a>&nbsp;along with a custom Google Maps skin courtesy of&nbsp;<a href="#">Snazzy Maps</a>.</p>
-                    <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with SASS and LESS files for easy customization!</p>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <section id="contact" class="content-section text-center" style="padding-top: 100px; padding-bottom: 100px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <h2>Contact us</h2>
-                    <p>Feel free to leave us a comment on the<a href="#">&nbsp;Grayscale template overview page</a>&nbsp;to give some feedback about this theme!</p>
-                    <ul class="list-inline banner-social-buttons">
-                        <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i class="fa fa-google-plus fa-fw"></i><span class="network-name">&nbsp; Google+</span></button></li>
-                        <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i class="fa fa-twitter fa-fw"></i><span class="network-name">&nbsp;Twitter</span></button></li>
-                        <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i class="fa fa-github fa-fw"></i><span class="network-name">&nbsp;github</span></button></li>
-                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                    <img class="thumbnail" src="assets/img/space.jpg" alt="image" width="100%" height="100%">
-
-            </div>
-        </div>
-    </div>
-
-
-    <div class="container">
+    <div class="container" style="background-color: #d7eafbcf">
         <div id="disqus_thread"></div>
     </div>
 
@@ -107,6 +104,22 @@
             <p>Copyright ©&nbsp;Brand 2018</p>
         </div>
     </footer>
+
+    <div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col item social">
+                        <a href="#"><i class="fab fa-facebook-square"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></i></a>
+                        <a href="#"><i class="fab fa-snapchat-square"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <p class="copyright">Everyolo © 2019</p>
+            </div>
+        </footer>
+    </div>
 
     <!-- scripts -->
 
@@ -118,7 +131,7 @@
     <script src="assets/js/app.js"></script>
     <script src="assets/js/fakeLoader.min.js"></script>
     <script src="assets/js/parallax.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@4.0.0/dist/simpleParallax.min.js"></script>
+    <script src="assets/js/simpleParallax.min.js"></script>
 
     <!-- Particles -->
     <script>
@@ -132,11 +145,16 @@
     <script>
         var images = document.querySelectorAll('.thumbnail');
         new simpleParallax(images, {
-            delay: 0, 
             orientation: 'left', 
-            scale: 1.30, 
-            overflow: true 
+            overflow: true
         });
+
+        var images = document.querySelectorAll('.thumbnail2');
+        new simpleParallax(images, {
+            orientation: 'right', 
+            overflow: true
+        });
+
     </script>
 
     <!-- Lodaing -->
