@@ -37,7 +37,8 @@
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
                         <h1 class="brand-heading">EVERYOLO</h1>
-                        <p class="intro-text">현관<br>Created with love.</p><a class="btn btn-link btn-circle" role="button" href="#about"><i class="fa fa-angle-double-down animated"></i></a></div>
+                        <p class="intro-text">현관<br>Created with love.</p><a class="btn btn-link btn-circle" role="button" href="#about"><i class="fa fa-angle-double-down animated"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,13 +55,24 @@
             </div>
         </div>
     </section>
-    <section id="download" class="download-section content-section text-center parallax-window" data-parallax="scroll" data-image-src="assets/img/space.jpg">
+
+    <!-- <section id="download" class="download-section parallax-window" data-parallax="scroll" data-image-src="assets/img/space.jpg"></section> -->
+    <div class="parallax-window" data-parallax="scroll" data-image-src="assets/img/space.jpg"></div>
+
+    <section id="download" class="content-section text-center">
         <div class="container">
-            <div class="col-lg-8 mx-auto">
-                test
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>About grayscale</h2>
+                    <p>Grayscale is a free Bootstrap theme. It can be yours right now, simply download the template on&nbsp;<a href="#">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
+                    <p>This theme features stock photos by&nbsp;<a href="#">Gratisography</a>&nbsp;along with a custom Google Maps skin courtesy of&nbsp;<a href="#">Snazzy Maps</a>.</p>
+                    <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with SASS and LESS files for easy customization!</p>
+                </div>
             </div>
+        </div>
     </section>
-    <section id="contact" class="content-section text-center">
+
+    <section id="contact" class="content-section text-center" style="padding-top: 100px; padding-bottom: 100px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
@@ -75,6 +87,16 @@
             </div>
         </div>
     </section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                    <img class="thumbnail" src="assets/img/space.jpg" alt="image" width="100%" height="100%">
+
+            </div>
+        </div>
+    </div>
+
 
     <div class="container">
         <div id="disqus_thread"></div>
@@ -95,13 +117,25 @@
     <script src="assets/js/particles.js"></script>
     <script src="assets/js/app.js"></script>
     <script src="assets/js/fakeLoader.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/js/parallax.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@4.0.0/dist/simpleParallax.min.js"></script>
 
     <!-- Particles -->
     <script>
         particlesJS.load('particles-js', 'assets/particles.json', function() {
             console.log('particles.js loaded - callback');
+        });
+    </script>
+
+    <!-- simple parallax -->
+
+    <script>
+        var images = document.querySelectorAll('.thumbnail');
+        new simpleParallax(images, {
+            delay: 0, 
+            orientation: 'left', 
+            scale: 1.30, 
+            overflow: true 
         });
     </script>
 
