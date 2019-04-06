@@ -46,48 +46,7 @@
         </div>
     </header>
 
-    <section id="about" class="content-section text-center">
-
-    </section>
-
-    
-
-    <section id="download" class="download-section text-center">
-    
-    </section>
-
-    <div class="parallax-window" data-parallax="scroll" data-image-src="assets/img/laptop.jpg"></div>
-
-    <!-- <section id="download" class="content-section text-center">
-        <div class="container" style="padding:0;">
-            <div class="row">
-                <div class="col-4" style="padding: 0;">
-                    <img class="thumbnail1" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
-                </div>
-                <div class="col-4" style="padding: 0;">
-                    <img class="thumbnail2" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
-                </div>
-                <div class="col-4" style="padding: 0;">
-                    <img class="thumbnail3" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-4" style="padding: 0;">
-                    <img class="thumbnail4" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
-                </div>
-                <div class="col-4" style="padding: 0;">
-                    <img class="thumbnail5" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
-                </div>
-                <div class="col-4" style="padding: 0;">
-                    <img class="thumbnail6" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- <div class="parallax-window" data-parallax="scroll" data-image-src="assets/img/laptop.jpg"></div> -->
-    
-    <section id="contact" class="content-section text-center" style="padding-top: 100px; padding-bottom: 100px;">
+    <section id="about" class="content-section text-center" style="height:100vh">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
@@ -96,9 +55,31 @@
         </div>
     </section>
 
-    <!-- <div class="container" style="background-color: #d7eafbcf">
+    <div class="parallax-window" data-parallax="scroll" data-image-src="assets/img/beach.jpg"></div>
+
+    <section id="download" class="download-section text-center" style="height:100vh">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="parallax-window" data-parallax="scroll" data-image-src="assets/img/beach.jpg"></div>
+    
+    <section id="contact" class="content-section text-center" style="height:100vh">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container" style="background-color: #d7eafbcf">
         <div id="disqus_thread"></div>
-    </div> -->
+    </div>
 
     <footer>
         <div class="container text-center">
@@ -133,6 +114,7 @@
     <script src="assets/js/fakeLoader.min.js"></script>
     <script src="assets/js/parallax.min.js"></script>
     <script src="assets/js/simpleParallax.min.js"></script>
+    <script id="dsq-count-scr" src="//everyolo.disqus.com/count.js" async></script>
 
     <!-- Particles -->
     <script>
@@ -141,9 +123,30 @@
         });
     </script>
 
+    <!-- Lodaing -->
+    <script>
+        $(document).ready(function () {
+            $.fakeLoader({
+                bgColor: '#111',
+                spinner:"spinner7"
+            });
+        });
+    </script>
+
+    <!-- Disqus -->
+    <script>
+        (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://everyolo.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    
+
     <!-- simple parallax -->
 
-    <script>
+    <!-- <script>
         var images = document.querySelectorAll('.thumbnail1');
         new simpleParallax(images, {
             orientation: 'up'
@@ -175,26 +178,32 @@
         });
     </script>
 
-    <!-- Lodaing -->
-    <script>
-        $(document).ready(function () {
-            $.fakeLoader({
-                bgColor: '#111',
-                spinner:"spinner7"
-            });
-        });
-    </script>
-
-    <!-- Disqus -->
-    <script>
-        (function() {
-            var d = document, s = d.createElement('script');
-            s.src = 'https://everyolo.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
-    <script id="dsq-count-scr" src="//everyolo.disqus.com/count.js" async></script>
+    <section id="download" class="content-section text-center">
+        <div class="container" style="padding:0;">
+            <div class="row">
+                <div class="col-4" style="padding: 0;">
+                    <img class="thumbnail1" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
+                </div>
+                <div class="col-4" style="padding: 0;">
+                    <img class="thumbnail2" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
+                </div>
+                <div class="col-4" style="padding: 0;">
+                    <img class="thumbnail3" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4" style="padding: 0;">
+                    <img class="thumbnail4" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
+                </div>
+                <div class="col-4" style="padding: 0;">
+                    <img class="thumbnail5" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
+                </div>
+                <div class="col-4" style="padding: 0;">
+                    <img class="thumbnail6" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
+                </div>
+            </div>
+        </div>
+    </section> -->
 
 </body>
 </html>
