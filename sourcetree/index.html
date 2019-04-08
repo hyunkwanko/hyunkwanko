@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Everyolo</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" media="screen" href="assets/bootstrap/css/particles.css">
+    <link rel="stylesheet" media="screen" href="assets/bootstrap/css/style.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/fakeLoader.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/Footer-Dark.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+</head>
+
+<!-- particles.js container -->
+<div id="particles-js"></div>
+
+<body id="page-top">
+    <div class="fakeLoader"></div>
+
+    <nav class="navbar navbar-light navbar-expand-md navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#" style="color: #000">EVERYOLO</a><button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+                value="Menu"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link active js-scroll-trigger" href="#about" style="color: #000">About</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link js-scroll-trigger" href="#download" style="color: #000">download</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link js-scroll-trigger" href="#contact" style="color: #000">contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="masthead">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h1 class="brand-heading">EVERYOLO</h1>
+                        <p class="intro-text">현관<br>Created with love.</p><a class="btn btn-link btn-circle" role="button" href="#about"><i class="fa fa-angle-double-down animated"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="content-section text-center" style="height:100vh">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="parallax-window" data-parallax="scroll" data-image-src="assets/img/cherry.jpg"></div>
+
+    <section id="download" class="download-section text-center" style="height:100vh">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="parallax-window" data-parallax="scroll" data-image-src="assets/img/sakura.jpg"></div>
+    
+    <!-- <section id="contact" class="content-section text-center" style="height:100vh">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Container (Portfolio Section) -->
+    <div class="portfolio-section" id="portfolio">
+        <h3 style="text-align:center">MY STUDY</h3>
+        <p style="text-align:center"><em>Here are some of my latest programming work</em></p><br>
+        <div class="portfolio-content">
+            <div class="study"><a href="#">study1</a><i class="fa fa-angle-right"></i></div>
+            <div class="study"><a href="#">study2</a><i class="fa fa-angle-right"></i></div>
+            <div class="study"><a href="#">study3</a><i class="fa fa-angle-right"></i></div>
+            <div class="study"><a href="#">study4</a><i class="fa fa-angle-right"></i></div>
+        </div>
+    </div>
+
+    <div class="container" style="background-color: #d7eafbcf">
+        <div id="disqus_thread"></div>
+    </div>
+
+    <footer>
+        <div class="container text-center">
+            <p>Copyright ©&nbsp;Brand 2018</p>
+        </div>
+    </footer>
+
+    <div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col item social">
+                        <a href="#"><i class="fab fa-facebook-square"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <p class="copyright">Everyolo © 2019</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- scripts -->
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="assets/js/grayscale.js"></script>
+    <script src="assets/js/particles.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/fakeLoader.min.js"></script>
+    <script src="assets/js/parallax.min.js"></script>
+    <script src="assets/js/simpleParallax.min.js"></script>
+    <script id="dsq-count-scr" src="//everyolo.disqus.com/count.js" async></script>
+
+    <!-- Particles -->
+    <script>
+        particlesJS.load('particles-js', 'assets/particles.json', function() {
+            console.log('particles.js loaded - callback');
+        });
+    </script>
+
+    <!-- Lodaing -->
+    <script>
+        $(document).ready(function () {
+            $.fakeLoader({
+                bgColor: '#111',
+                spinner:"spinner7"
+            });
+        });
+    </script>
+
+    <!-- Disqus -->
+    <script>
+        (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://everyolo.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    
+
+    <!-- simple parallax -->
+
+    <!-- <script>
+        var images = document.querySelectorAll('.thumbnail1');
+        new simpleParallax(images, {
+            orientation: 'up'
+        });
+
+        var images = document.querySelectorAll('.thumbnail2');
+        new simpleParallax(images, {
+            orientation: 'right'
+        });
+
+        var images = document.querySelectorAll('.thumbnail3');
+        new simpleParallax(images, {
+            orientation: 'left'
+        });
+
+        var images = document.querySelectorAll('.thumbnail4');
+        new simpleParallax(images, {
+            orientation: 'down'
+        });
+
+        var images = document.querySelectorAll('.thumbnail5');
+        new simpleParallax(images, {
+            orientation: 'left'
+        });
+
+        var images = document.querySelectorAll('.thumbnail6');
+        new simpleParallax(images, {
+            orientation: 'right'
+        });
+    </script>
+
+    <section id="download" class="content-section text-center">
+        <div class="container" style="padding:0;">
+            <div class="row">
+                <div class="col-4" style="padding: 0;">
+                    <img class="thumbnail1" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
+                </div>
+                <div class="col-4" style="padding: 0;">
+                    <img class="thumbnail2" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
+                </div>
+                <div class="col-4" style="padding: 0;">
+                    <img class="thumbnail3" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4" style="padding: 0;">
+                    <img class="thumbnail4" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
+                </div>
+                <div class="col-4" style="padding: 0;">
+                    <img class="thumbnail5" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
+                </div>
+                <div class="col-4" style="padding: 0;">
+                    <img class="thumbnail6" src="assets/img/hawaii.jpg" alt="image" width="100%" height="100%">
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+</body>
+</html>
