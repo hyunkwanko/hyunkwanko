@@ -13,8 +13,12 @@ $(document).ready(function () {
 
 
 // Disqus
+var disqus_config = function () {
+    this.page.url = '{{https://hyunkwanko.github.io/sourcetree/}}';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = '{{hyunkwanko}}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
 
-(function() {
+(function() { // DON'T EDIT BELOW THIS LINE
     var d = document, s = d.createElement('script');
     s.src = 'https://everyolo.disqus.com/embed.js';
     s.setAttribute('data-timestamp', +new Date());
