@@ -54,3 +54,7 @@ canvas{
   background-repeat: no-repeat;
   position: absolute;
 }
+
+#mainNav a{
+  color: #000;
+}
