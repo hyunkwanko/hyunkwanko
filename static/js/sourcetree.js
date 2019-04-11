@@ -13,14 +13,22 @@ $(document).ready(function () {
 
 
 // Disqus
-var disqus_config = function () {
-    this.page.url = 'https://hyunkwanko.github.io/sourcetree/';  // Replace PAGE_URL with your page's canonical URL variable
-    // this.page.identifier = 'localhost'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
+// var disqus_config = function () {
+//     this.page.url = 'https://hyunkwanko.github.io/sourcetree/';  // Replace PAGE_URL with your page's canonical URL variable
+//     // this.page.identifier = 'localhost'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+// };
 
-(function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://everyolo.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
+// (function() { // DON'T EDIT BELOW THIS LINE
+//     var d = document, s = d.createElement('script');
+//     s.src = 'https://everyolo.disqus.com/embed.js';
+//     s.setAttribute('data-timestamp', +new Date());
+//     (d.head || d.body).appendChild(s);
+// })();
+
+var disqus_shortname = 'everyolo';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 })();
