@@ -14,7 +14,7 @@ $(document).ready(function () {
 
 // Disqus
 var disqus_config = function () {
-    this.page.url = '{{https://hyunkwanko.github.io/}}';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.url = '{{https://hyunkwanko.github.io/sourcetree}}';  // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = '{{everyolo}}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 };
 
