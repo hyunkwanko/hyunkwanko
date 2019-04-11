@@ -11,8 +11,14 @@ $(document).ready(function () {
     });
 });
 
+
 // Disqus
-(function() {
+var disqus_config = function () {
+    this.page.url = '{{https://hyunkwanko.github.io/}}';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = '{{everyolo}}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
     var d = document, s = d.createElement('script');
     s.src = 'https://everyolo.disqus.com/embed.js';
     s.setAttribute('data-timestamp', +new Date());
