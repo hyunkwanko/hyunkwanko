@@ -49,60 +49,60 @@
                         </div>
                     </div>
 
-                    <br><div class="ui floating message"><p><code><b>git checkout HEAD -filename</b> : Commit을 참조하기 쉽도록 태그를 붙이는 명령어</p></code></div><br>
+                    <br><div class="ui floating message"><p><code><b>git checkout HEAD -filename</b> : 특정 파일을 원하는 Commit 시점으로 되돌리기</p></code></div><br>
 
                     <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;Sourcetree 실행 시 첫 화면</div>
                     <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/1.png" style="width:400px; height: 500px; margin: 0px auto;"></div><br><br>
 
-                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;Local에서 디렉토리 불러오기</div>
-                    <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/2.png" style="min-width: 500px; height: 400px; margin: 0px auto;"></div><br><br>
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;Local에서 디렉토리 불러온 후 현재 Commit 상태 확인</div>
+                    <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/2.png" style="min-width: 500px; height: 350px; margin: 0px auto;"></div><br><br>
 
-                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;불러온 디렉토리 더블 클릭 시 화면</div>
-                    <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/3.png" style="width: 400px; height: 250px; margin: 0px auto;"></div><br><br>
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;파일명은 'README.md'이고 1줄에 1 Commit했다. </div>
+                    <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/3.png" style="width: 400px; height: 270px; margin: 0px auto;"></div><br><br>
 
-                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;왼쪽편 Workspace에 ‘히스토리’를 눌러서 Commit 상태 확인</div>
-                    <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/4.png" style="min-width: 500px; height: 550px; margin: 0px auto;"></div><br><br>
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;되돌아가길 원하는 Commit을 우클릭 후 '체크아웃' 버튼 클릭</div>
+                    <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/4.png" style="min-width: 500px; height: 500px; margin: 0px auto;"></div><br><br>
 
-                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;태그 붙이길 원하는 Commit 우클릭</div>
-                    <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/5.png" style="width: 400px; height: 250px; margin: 0px auto;"></div><br><br>
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;확인창</div>
+                    <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/5.png" style="width: 400px; height: 200px; margin: 0px auto;"></div><br><br>
 
-                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;태그 이름 1.0을 입력하고 추가 버튼 클릭</div>
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;Commit HEAD가 바뀐 것을 확인</div>
                     <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/6.png" style="min-width: 500px; height: 400px; margin: 0px auto;"></div><br><br>
 
-                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;Commit에 태그가 추가된 것을 확인</div>
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;파일의 내용을 확인해보면 바뀐 것을 알 수 있다.</div>
                     <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/7.png" style="width: 400px; height: 250px; margin: 0px auto;"></div><br><br>
 
-                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;Worksapce의 ‘태그’에도 생성된 것을 확인</div>
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;<b>번외</b>로 이 명령어를 bash에서 실행하면 '원하는' Commit 시점이 아니라 '최종' Commit 시점으로 돌아간다. 하지만 Sourcetree에선 원하는 시점으로 갈 수 있다.</div>
                     <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/8.png" style="min-width: 500px; height: 500px; margin: 0px auto;"></div><br><br>
 
-                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;새로운 Commit 생성</div>
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;현재 HEAD가 세 번째 Commit을 가리키고 있다. 첫 번째 Commit으로 돌아가보겠다.</div>
                     <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/9.png" style="min-width: 500px; height: 500px; margin: 0px auto;"></div><br><br>
 
-                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;새로운 Commit에 2.0이라는 태그를 추가</div>
-                    <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/10.png" style="width:400px; height: 200px; margin: 0px auto;"></div><br><br>
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;이전 Commit이 아니라서 다른 확인창이 나오는 것을 확인</div>
+                    <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/10.png" style="width:400px; height: 180px; margin: 0px auto;"></div><br><br>
 
-                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;Workspace에 2.0이 추가된 것을 확인</div>
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;새 브랜치로 체크아웃도 할 수 있지만 기존의 브랜치에서 체크아웃</div>
                     <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/11.png" style="min-width: 500px; height: 500px; margin: 0px auto;"></div><br><br>
 
-                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;태그 제거하는 방법</div>
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;Sourcetree에서 각각의 Commit과 그 내용을 한 눈에 알아볼 수 있도록 GUI를 제공<br><i class="fas fa-square"></i>&emsp;첫 번째 Commit으로 체크아웃</div>
                     <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/12.png" style="min-width: 500px; height: 500px; margin: 0px auto;"></div><br><br>
 
-                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;Workspace에서 삭제하길 원하는 태그 우클릭해서 삭제 버튼 클릭</div>
-                    <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/13.png" style="width:400px; height: 250px; margin: 0px auto;"></div><br><br>
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;경고창</div>
+                    <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/13.png" style="width:400px; height: 200px; margin: 0px auto;"></div><br><br>
 
-                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;태그 제거 확인</div>
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;Commit HEAD가 첫 번째 Commit으로 바뀐 것을 확인</div>
                     <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/14.png" style="min-width: 500px; height: 400px; margin: 0px auto;"></div><br><br>
 
-                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;Github 비밀번호 입력</div>
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;파일의 내용 또한 바뀌었다.</div>
                     <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/15.png" style="width:400px; height: 250px; margin: 0px auto;"></div><br><br>
 
-                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;태그가 제거된 것을 확인</div>
-                    <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/16.png" style="min-width: 500px; height: 500px; margin: 0px auto;"></div><br><br>
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;다시 마지막 Commit으로 돌아가보겠다.</div>
+                    <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/16.png" style="min-width: 500px; height: 400px; margin: 0px auto;"></div><br><br>
 
-                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;메시지 포함한 태그 생성하기<br><i class="fas fa-square"></i>&emsp;태그 클릭 후 ‘고급 옵션’ 클릭, 서명 메시지에 입력 후 추가 </div>
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;이번엔 경고창이 나오지 않고 Commit HEAD가 바뀐 모습이다.</div>
                     <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/17.png" style="min-width: 500px; height: 400px; margin: 0px auto;"></div><br><br>
 
-                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;Workspace에서 생성한 태그 우클릭<br><i class="fas fa-square"></i>&emsp;세부 사항 클릭 </div>
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;파일의 내용 또한 마지막 Commit과 동일</div>
                     <div class="row"><img src="../../static/img/img_git_checkout_HEAD_filename/18.png" style="width:400px; height: 250px; margin: 0px auto;"></div><br><br>
 
                     <div class="ui form">
