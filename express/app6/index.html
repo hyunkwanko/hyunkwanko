@@ -50,6 +50,13 @@
                     </div>
 
                     <br><div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;미들웨어에서 요청 객체에 들어있는 헤더와 파라미터 확인하기</div>
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000">
+                        <i class="fas fa-square"></i>&emsp;웹브라우저에서 아래 URL로 요청해야한다.
+                    </div>
+                    <div class="shadow p-3 mb-5 bg-white rounded" style="color:#000">
+                        <i class="fas fa-square"></i>&emsp;http://localhost:3000?name=ko
+                    </div>
+
                     <div class="ui warning message" style="text-align: left !important; width: 60%; margin: 0 auto;">
                         <i class="fas fa-code" style="float:right;"></i><br>
 
@@ -69,9 +76,9 @@
                         &emsp;&emsp;var paramName = req.query.name;<br><br>
                             
                         &emsp;&emsp;res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});<br>
-                        &emsp;&emsp;res.write('Express 서버에서 응답한 결과입니다.');<br>
-                        &emsp;&emsp;res.write('User-Agent : ' + userAgent);<br>
-                        &emsp;&emsp;res.write('Param name : ' + paramName);<br>
+                        &emsp;&emsp;res.write('&lt;h1&gt;Express 서버에서 응답한 결과입니다.&lt;/h1&gt;');<br>
+                        &emsp;&emsp;res.write('&lt;div&gt;&lt;p&gt;User-Agent : ' + userAgent + '&lt;/p&gt;&lt;/div&gt;');<br>
+                        &emsp;&emsp;res.write('&lt;div&gt;&lt;p&gt;Param name : ' + paramName + '&lt;/p&gt;&lt;/div&gt;');<br>
                         &emsp;&emsp;res.end();<br>
                         });<br><br>
 
