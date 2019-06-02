@@ -55,17 +55,44 @@
 
                         <p><pre style="color:#0004ffab;">// Express 기본 모듈 불러오기</pre></p>
                         var express = require('express')<br>
-                        , http = require('http');<br><br>
-                        
+                        , http = require('http')<br>
+                        , path = require('path');<br><br>
+
+                        <p><pre style="color:#0004ffab;">// Express의 미들웨어 불러오기</pre></p>
+                        var bodyParser = require('body-parser')<br>
+                        , static = require('serve-static');<br><br>
+
                         <p><pre style="color:#0004ffab;">// 익스프레스 객체 생성</pre></p>
                         var app = express();<br><br>
 
-                        <p><pre style="color:#0004ffab;">// 기본 포트를 app 객체에 속성으로 설정</pre></p>
+                        <p><pre style="color:#0004ffab;">// 기본 속성 설정</pre></p>
                         app.set('port', process.env.PORT || 3000);<br><br>
+
+                        <p><pre style="color:#0004ffab;">// body-parser를 이용해 application/x-www-form-urlencoded 파싱</pre></p>
+                        app.use(bodyParser.urlencoded({ extended: false }))<br><br>
+
+                        <p><pre style="color:#0004ffab;">// body-parser를 이용해 application/json 파싱</pre></p>
+                        app.use(bodyParser.json())<br><br>
+
+                        app.use(static(path.join(__dirname, 'public')));<br><br>
+
+                        <p><pre style="color:#0004ffab;">// 미들웨어에서 파라미터 확인</pre></p>
+                        app.use(function(req, res, next) {<br>
+                        &emsp;&emsp;console.log('첫번째 미들웨어에서 요청을 처리함.');<br><br>
+
+                        &emsp;&emsp;var paramId = req.body.id || req.query.id;<br>
+                        &emsp;&emsp;var paramPassword = req.body.password || req.query.password;<br><br>
+                            
+                        &emsp;&emsp;res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});<br>
+                        &emsp;&emsp;res.write('Express 서버에서 응답한 결과입니다.');<br>
+                        &emsp;&emsp;res.write('Param id : ' + paramId);<br>
+                        &emsp;&emsp;res.write('Param password : ' + paramPassword);<br>
+                        &emsp;&emsp;res.end();<br>
+                        });<br><br>
 
                         <p><pre style="color:#0004ffab;">// Express 서버 시작</pre></p>
                         http.createServer(app).listen(app.get('port'), function(){<br>
-                        &emsp;&emsp;console.log('익스프레스 서버를 시작했습니다 : ' + app.get('port'));<br>
+                        &emsp;&emsp;console.log('Express server listening on port ' + app.get('port'));<br>
                         });
                     </div><br><br>
 

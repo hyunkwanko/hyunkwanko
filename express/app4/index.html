@@ -56,16 +56,20 @@
                         <p><pre style="color:#0004ffab;">// Express 기본 모듈 불러오기</pre></p>
                         var express = require('express')<br>
                         , http = require('http');<br><br>
-                        
+
                         <p><pre style="color:#0004ffab;">// 익스프레스 객체 생성</pre></p>
                         var app = express();<br><br>
 
-                        <p><pre style="color:#0004ffab;">// 기본 포트를 app 객체에 속성으로 설정</pre></p>
-                        app.set('port', process.env.PORT || 3000);<br><br>
+                        <p><pre style="color:#0004ffab;">// 미들웨어에서 응답 전송할 때 send 메소드 사용하여 JSON 데이터 전송</pre></p>
+                        app.use(function(req, res, next) {<br>
+                        &emsp;&emsp;console.log('첫번째 미들웨어에서 요청을 처리함.');<br><br>
+                            
+                        &emsp;&emsp;res.send({name:'소녀시대', age:20});<br>
+                        });<br><br>
 
                         <p><pre style="color:#0004ffab;">// Express 서버 시작</pre></p>
-                        http.createServer(app).listen(app.get('port'), function(){<br>
-                        &emsp;&emsp;console.log('익스프레스 서버를 시작했습니다 : ' + app.get('port'));<br>
+                        http.createServer(app).listen(3000, function(){<br>
+                        &emsp;&emsp;console.log('Express 서버가 3000번 포트에서 시작됨.');<br>
                         });
                     </div><br><br>
 
