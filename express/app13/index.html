@@ -55,17 +55,125 @@
 
                         <p><pre style="color:#0004ffab;">// Express 기본 모듈 불러오기</pre></p>
                         var express = require('express')<br>
-                        , http = require('http');<br><br>
-                        
+                        , http = require('http')<br>
+                        , path = require('path');<br><br>
+
+                        <p><pre style="color:#0004ffab;">// Express의 미들웨어 불러오기</pre></p>
+                        var bodyParser = require('body-parser')<br>
+                        , cookieParser = require('cookie-parser')<br>
+                        , static = require('serve-static')<br>
+                        , errorHandler = require('errorhandler');<br><br>
+
+                        <p><pre style="color:#0004ffab;">// 에러 핸들러 모듈 사용</pre></p>
+                        var expressErrorHandler = require('express-error-handler');<br><br>
+
+                        <p><pre style="color:#0004ffab;">// Session 미들웨어 불러오기</pre></p>
+                        var expressSession = require('express-session');<br><br>
+
                         <p><pre style="color:#0004ffab;">// 익스프레스 객체 생성</pre></p>
                         var app = express();<br><br>
 
-                        <p><pre style="color:#0004ffab;">// 기본 포트를 app 객체에 속성으로 설정</pre></p>
+                        <p><pre style="color:#0004ffab;">// 기본 속성 설정</pre></p>
                         app.set('port', process.env.PORT || 3000);<br><br>
+
+                        <p><pre style="color:#0004ffab;">// body-parser를 이용해 application/x-www-form-urlencoded 파싱</pre></p>
+                        app.use(bodyParser.urlencoded({ extended: false }))<br><br>
+
+                        <p><pre style="color:#0004ffab;">// body-parser를 이용해 application/json 파싱</pre></p>
+                        app.use(bodyParser.json())<br><br>
+
+                        app.use('/public', static(path.join(__dirname, 'public')));<br><br>
+
+                        <p><pre style="color:#0004ffab;">// cookie-parser 설정</pre></p>
+                        app.use(cookieParser());<br><br>
+
+                        <p><pre style="color:#0004ffab;">// 세션 설정</pre></p>
+                        app.use(expressSession({<br>
+                        &emsp;&emsp;secret:'my key',<br>
+                        &emsp;&emsp;resave:true,<br>
+                        &emsp;&emsp;saveUninitialized:true<br>
+                        }));<br><br>
+
+                        <p><pre style="color:#0004ffab;">// 라우터 사용하여 라우팅 함수 등록</pre></p>
+                        var router = express.Router();<br><br>
+
+                        <p><pre style="color:#0004ffab;">// 로그인 라우팅 함수 - 로그인 후 세션 저장함</pre></p>
+                        router.route('/process/login').post(function(req, res) {<br>
+                        &emsp;&emsp;console.log('/process/login 호출됨.');<br><br>
+
+                        &emsp;&emsp;var paramId = req.body.id || req.query.id;<br>
+                        &emsp;&emsp;var paramPassword = req.body.password || req.query.password;<br><br>
+                            
+                        &emsp;&emsp;if (req.session.user) {<br>
+                        <p><pre style="color:#0004ffab;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // 이미 로그인된 상태</pre></p>
+                        &emsp;&emsp;&emsp;&emsp;console.log('이미 로그인되어 상품 페이지로 이동합니다.');<br><br>
+                                
+                        &emsp;&emsp;&emsp;&emsp;res.redirect('/public/product.html');<br>
+                        &emsp;&emsp;} else {<br>
+                        <p><pre style="color:#0004ffab;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // 세션 저장</pre></p>
+                        &emsp;&emsp;&emsp;&emsp;req.session.user = {<br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;id: paramId,<br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;name: '소녀시대',<br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;authorized: true<br>
+                        &emsp;&emsp;&emsp;&emsp;};<br><br>
+                                
+                        &emsp;&emsp;&emsp;&emsp;res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});<br>
+                        &emsp;&emsp;&emsp;&emsp;res.write('&lt;h1&gt;로그인 성공&lt;/h1&gt;');<br>
+                        &emsp;&emsp;&emsp;&emsp;res.write('&lt;div&gt;&lt;p&gt;Param id : ' + paramId + '&lt;/p&gt;&lt;/div&gt;');<br>
+                        &emsp;&emsp;&emsp;&emsp;res.write('&lt;div&gt;&lt;p&gt;Param password : ' + paramPassword + '&lt;/p&gt;&lt;/div&gt;');<br>
+                        &emsp;&emsp;&emsp;&emsp;res.write("&lt;br&gt;&lt;br&gt;&lt;a href='/process/product'&gt;상품 페이지로 이동하기&lt;/a&gt;");<br>
+                        &emsp;&emsp;&emsp;&emsp;res.end();<br>
+                        &emsp;&emsp;}<br>
+                        });<br><br>
+
+                        <p><pre style="color:#0004ffab;">// 로그아웃 라우팅 함수 - 로그아웃 후 세션 삭제함</pre></p>
+                        router.route('/process/logout').get(function(req, res) {<br>
+                        &emsp;&emsp;console.log('/process/logout 호출됨.');<br><br>
+                            
+                        &emsp;&emsp;if (req.session.user) {<br>
+                        <p><pre style="color:#0004ffab;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // 로그인된 상태</pre></p>
+                        &emsp;&emsp;&emsp;&emsp;console.log('로그아웃합니다.');<br><br>
+                                
+                        &emsp;&emsp;&emsp;&emsp;req.session.destroy(function(err) {<br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;if (err) {throw err;}<br><br>
+                                    
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;console.log('세션을 삭제하고 로그아웃되었습니다.');<br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;res.redirect('/public/login2.html');<br>
+                        &emsp;&emsp;&emsp;&emsp;});<br>
+                        &emsp;&emsp;} else {<br>
+                        <p><pre style="color:#0004ffab;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // 로그인 안된 상태</pre></p>
+                        &emsp;&emsp;&emsp;&emsp;console.log('아직 로그인되어있지 않습니다.');<br><br>
+                        
+                        &emsp;&emsp;&emsp;&emsp;res.redirect('/public/login2.html');<br>
+                        &emsp;&emsp;}<br>
+                        });<br><br>
+
+                        <p><pre style="color:#0004ffab;">// 상품정보 라우팅 함수</pre></p>
+                        router.route('/process/product').get(function(req, res) {<br>
+                        &emsp;&emsp;console.log('/process/product 호출됨.');<br><br>
+                            
+                        &emsp;&emsp;if (req.session.user) {<br>
+                        &emsp;&emsp;&emsp;&emsp;res.redirect('/public/product.html');<br>
+                        &emsp;&emsp;} else {<br>
+                        &emsp;&emsp;&emsp;&emsp;res.redirect('/public/login2.html');<br>
+                        &emsp;&emsp;}<br>
+                        });<br><br>
+
+                        app.use('/', router);<br><br>
+
+                        <p><pre style="color:#0004ffab;">// 404 에러 페이지 처리</pre></p>
+                        var errorHandler = expressErrorHandler({<br>
+                        &emsp;&emsp;static: {<br>
+                        &emsp;&emsp;&emsp;&emsp;'404': './public/404.html'<br>
+                        &emsp;&emsp;}<br>
+                        });<br><br>
+
+                        app.use( expressErrorHandler.httpError(404) );<br>
+                        app.use( errorHandler );<br><br>
 
                         <p><pre style="color:#0004ffab;">// Express 서버 시작</pre></p>
                         http.createServer(app).listen(app.get('port'), function(){<br>
-                        &emsp;&emsp;console.log('익스프레스 서버를 시작했습니다 : ' + app.get('port'));<br>
+                        &emsp;&emsp;console.log('Express server listening on port ' + app.get('port'));<br>
                         });
                     </div><br><br>
 
