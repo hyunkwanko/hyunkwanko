@@ -55,17 +55,147 @@
 
                         <p><pre style="color:#0004ffab;">// Express 기본 모듈 불러오기</pre></p>
                         var express = require('express')<br>
-                        , http = require('http');<br><br>
-                        
+                        , http = require('http')<br>
+                        , path = require('path');<br><br>
+
+                        <p><pre style="color:#0004ffab;">// Express의 미들웨어 불러오기</pre></p>
+                        var bodyParser = require('body-parser')<br>
+                        , cookieParser = require('cookie-parser')<br>
+                        , static = require('serve-static')<br>
+                        , errorHandler = require('errorhandler');<br><br>
+
+                        <p><pre style="color:#0004ffab;">// 에러 핸들러 모듈 사용</pre></p>
+                        var expressErrorHandler = require('express-error-handler');<br><br>
+
+                        <p><pre style="color:#0004ffab;">// Session 미들웨어 불러오기</pre></p>
+                        var expressSession = require('express-session');<br><br>
+
+                        <p><pre style="color:#0004ffab;">// 파일 업로드용 미들웨어</pre></p>
+                        var multer = require('multer');<br>
+                        var fs = require('fs');<br><br>
+
+                        <p><pre style="color:#0004ffab;">// 클라이언트에서 ajax로 요청 시 CORS(다중 서버 접속) 지원</pre></p>
+                        var cors = require('cors');<br><br>
+
                         <p><pre style="color:#0004ffab;">// 익스프레스 객체 생성</pre></p>
                         var app = express();<br><br>
 
-                        <p><pre style="color:#0004ffab;">// 기본 포트를 app 객체에 속성으로 설정</pre></p>
+                        <p><pre style="color:#0004ffab;">// 기본 속성 설정</pre></p>
                         app.set('port', process.env.PORT || 3000);<br><br>
+
+                        <p><pre style="color:#0004ffab;">// body-parser를 이용해 application/x-www-form-urlencoded 파싱</pre></p>
+                        app.use(bodyParser.urlencoded({ extended: false }))<br><br>
+
+                        <p><pre style="color:#0004ffab;">// body-parser를 이용해 application/json 파싱</pre></p>
+                        app.use(bodyParser.json())<br><br>
+
+                        <p><pre style="color:#0004ffab;">// public 폴더와 uploads 폴더 오픈</pre></p>
+                        app.use('/public', static(path.join(__dirname, 'public')));<br>
+                        app.use('/uploads', static(path.join(__dirname, 'uploads')));<br><br>
+
+                        <p><pre style="color:#0004ffab;">// cookie-parser 설정</pre></p>
+                        app.use(cookieParser());<br><br>
+
+                        <p><pre style="color:#0004ffab;">// 세션 설정</pre></p>
+                        app.use(expressSession({<br>
+                        &emsp;&emsp;secret:'my key',<br>
+                        &emsp;&emsp;resave:true,<br>
+                        &emsp;&emsp;saveUninitialized:true<br>
+                        }));<br><br>
+
+                        <p><pre style="color:#0004ffab;">// 클라이언트에서 ajax로 요청 시 CORS(다중 서버 접속) 지원</pre></p>
+                        app.use(cors());<br><br>
+
+                        <p><pre style="color:#0004ffab;">// multer 미들웨어 사용 : 미들웨어 사용 순서 중요  body-parser -> multer -> router</pre></p>
+                        <p><pre style="color:#0004ffab;">// 파일 제한 : 10개, 1G</pre></p>
+                        var storage = multer.diskStorage({<br>
+                        &emsp;&emsp;destination: function (req, file, callback) {<br>
+                        &emsp;&emsp;&emsp;&emsp;callback(null, 'uploads')<br>
+                        &emsp;&emsp;},<br>
+                        &emsp;&emsp;filename: function (req, file, callback) {<br>
+                        &emsp;&emsp;&emsp;&emsp;callback(null, file.originalname + Date.now())<br>
+                        &emsp;&emsp;}<br>
+                        });<br><br>
+
+                        var upload = multer({<br>
+                        &emsp;&emsp;storage: storage,<br>
+                        &emsp;&emsp;limits: {<br>
+                        &emsp;&emsp;&emsp;&emsp;files: 10,<br>
+                        &emsp;&emsp;&emsp;&emsp;fileSize: 1024 * 1024 * 1024<br>
+                        &emsp;&emsp;}<br>
+                        });<br><br>
+
+                        <p><pre style="color:#0004ffab;">// 라우터 사용하여 라우팅 함수 등록</pre></p>
+                        var router = express.Router();<br><br>
+
+                        <p><pre style="color:#0004ffab;">// 파일 업로드 라우팅 함수 - 로그인 후 세션 저장함</pre></p>
+                        router.route('/process/photo').post(upload.array('photo', 1), function(req, res) {<br>
+                        &emsp;&emsp;console.log('/process/photo 호출됨.');<br><br>
+                            
+                        &emsp;&emsp;try {<br>
+                        &emsp;&emsp;&emsp;&emsp;var files = req.files;<br><br>
+                            
+                        &emsp;&emsp;&emsp;&emsp;console.dir('#===== 업로드된 첫번째 파일 정보 =====#')<br>
+                        &emsp;&emsp;&emsp;&emsp;console.dir(req.files[0]);<br>
+                        &emsp;&emsp;&emsp;&emsp;console.dir('#=====#')<br><br>
+                                
+                        <p><pre style="color:#0004ffab;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // 현재의 파일 정보를 저장할 변수 선언</pre></p>
+                        &emsp;&emsp;&emsp;&emsp;var originalname = '',<br>
+                        &emsp;&emsp;&emsp;&emsp;filename = '',<br>
+                        &emsp;&emsp;&emsp;&emsp;mimetype = '',<br>
+                        &emsp;&emsp;&emsp;&emsp;size = 0;<br><br>
+                        
+                        <p></p><pre style="color:#0004ffab;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // 배열에 들어가 있는 경우 (설정에서 1개의 파일도 배열에 넣게 했음)</pre></p>
+                        &emsp;&emsp;&emsp;&emsp;if (Array.isArray(files)) {<br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;console.log("배열에 들어있는 파일 갯수 : %d", files.length);<br><br>
+                                    
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;for (var index = 0; index &lt; files.length; index++) {<br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;originalname = files[index].originalname;<br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;filename = files[index].filename;<br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;mimetype = files[index].mimetype;<br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;size = files[index].size;<br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;}<br><br>
+                        <p><pre style="color:#0004ffab;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // 배열에 들어가 있지 않은 경우 (현재 설정에서는 해당 없음)</pre></p>
+                        &emsp;&emsp;&emsp;&emsp;} else {<br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;console.log("파일 갯수 : 1 ");<br><br>
+                                    
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;originalname = files[index].originalname;<br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;filename = files[index].name;<br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;mimetype = files[index].mimetype;<br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;size = files[index].size;<br>
+                        &emsp;&emsp;&emsp;&emsp;}<br><br>
+                                
+                        &emsp;&emsp;&emsp;&emsp;console.log('현재 파일 정보 : ' + originalname + ', ' + filename + ', '<br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;+ mimetype + ', ' + size);<br><br>
+                                
+                        <p><pre style="color:#0004ffab;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // 클라이언트에 응답 전송</pre></p>
+                        &emsp;&emsp;&emsp;&emsp;res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});<br>
+                        &emsp;&emsp;&emsp;&emsp;res.write('&lt;h3&gt;파일 업로드 성공&lt;/h3&gt;');<br>
+                        &emsp;&emsp;&emsp;&emsp;res.write('&lt;hr/&gt;');<br>
+                        &emsp;&emsp;&emsp;&emsp;res.write('&lt;p&gt;원본 파일명 : ' + originalname + ' -> 저장 파일명 : ' + filename + '&lt;/p&gt;');<br>
+                        &emsp;&emsp;&emsp;&emsp;res.write('&lt;p&gt;MIME TYPE : ' + mimetype + '&lt;/p&gt;');<br>
+                        &emsp;&emsp;&emsp;&emsp;res.write('&lt;p&gt;파일 크기 : ' + size + '&lt;/p&gt;');<br>
+                        &emsp;&emsp;&emsp;&emsp;res.end();<br>
+                        &emsp;&emsp;} catch(err) {<br>
+                        &emsp;&emsp;&emsp;&emsp;console.dir(err.stack);<br>
+                        &emsp;&emsp;}<br>
+                        });<br><br>
+                        
+                        app.use('/', router);<br><br>
+
+                        <p><pre style="color:#0004ffab;">// 404 에러 페이지 처리</pre></p>
+                        var errorHandler = expressErrorHandler({<br>
+                        &emsp;&emsp;static: {<br>
+                        &emsp;&emsp;&emsp;&emsp;'404': './public/404.html'<br>
+                        &emsp;&emsp;}<br>
+                        });<br><br>
+
+                        app.use( expressErrorHandler.httpError(404) );<br>
+                        app.use( errorHandler );<br>
 
                         <p><pre style="color:#0004ffab;">// Express 서버 시작</pre></p>
                         http.createServer(app).listen(app.get('port'), function(){<br>
-                        &emsp;&emsp;console.log('익스프레스 서버를 시작했습니다 : ' + app.get('port'));<br>
+                        &emsp;&emsp;console.log('Express server listening on port ' + app.get('port'));<br>
                         });
                     </div><br><br>
 
