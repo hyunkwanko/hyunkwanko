@@ -55,17 +55,54 @@
 
                         <p><pre style="color:#0004ffab;">// Express 기본 모듈 불러오기</pre></p>
                         var express = require('express')<br>
-                        , http = require('http');<br><br>
-                        
+                        , http = require('http')<br>
+                        , path = require('path');<br><br>
+
+                        <p><pre style="color:#0004ffab;">// Express의 미들웨어 불러오기</pre></p>
+                        var bodyParser = require('body-parser')<br>
+                        , static = require('serve-static');<br><br>
+
                         <p><pre style="color:#0004ffab;">// 익스프레스 객체 생성</pre></p>
                         var app = express();<br><br>
 
-                        <p><pre style="color:#0004ffab;">// 기본 포트를 app 객체에 속성으로 설정</pre></p>
+                        <p><pre style="color:#0004ffab;">// 기본 속성 설정</pre></p>
                         app.set('port', process.env.PORT || 3000);<br><br>
+
+                        <p><pre style="color:#0004ffab;">// body-parser를 이용해 application/x-www-form-urlencoded 파싱</pre></p>
+                        app.use(bodyParser.urlencoded({ extended: false }))<br><br>
+
+                        <p><pre style="color:#0004ffab;">// body-parser를 이용해 application/json 파싱</pre></p>
+                        app.use(bodyParser.json())<br><br>
+
+                        app.use('/public', static(path.join(__dirname, 'public')));<br><br>
+
+                        <p><pre style="color:#0004ffab;">// 라우터 사용하여 라우팅 함수 등록</pre></p>
+                        var router = express.Router();<br><br>
+
+                        router.route('/process/users/:id').get(function(req, res) {<br>
+                        &emsp;&emsp;console.log('/process/users/:id 처리함.');<br>
+
+                        <p><pre style="color:#0004ffab;">&emsp;&emsp; // URL 파라미터 확인</pre></p>
+                        &emsp;&emsp;var paramId = req.params.id;<br><br>
+                            
+                        &emsp;&emsp;console.log('/process/users와 토큰 %s를 이용해 처리함.', paramId);<br><br>
+
+                        &emsp;&emsp;res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});<br>
+                        &emsp;&emsp;res.write('&lt;h1&gt;Express 서버에서 응답한 결과입니다.&lt;/h1&gt;');<br>
+                        &emsp;&emsp;res.write('&lt;div&gt;&lt;p&gt;Param id : ' + paramId + '&lt;/p&gt;&lt;/div&gt;');<br>
+                        &emsp;&emsp;res.end();<br>
+                        });<br><br>
+
+                        app.use('/', router);<br><br>
+
+                        <p><pre style="color:#0004ffab;">// 등록되지 않은 패스에 대해 페이지 오류 응답</pre></p>
+                        app.all('*', function(req, res) {<br>
+                        &emsp;&emsp;res.status(404).send('ERROR - 페이지를 찾을 수 없습니다.');<br>
+                        });<br><br>
 
                         <p><pre style="color:#0004ffab;">// Express 서버 시작</pre></p>
                         http.createServer(app).listen(app.get('port'), function(){<br>
-                        &emsp;&emsp;console.log('익스프레스 서버를 시작했습니다 : ' + app.get('port'));<br>
+                        &emsp;&emsp;console.log('Express server listening on port ' + app.get('port'));<br>
                         });
                     </div><br><br>
 
