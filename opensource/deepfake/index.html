@@ -28,7 +28,7 @@
         <div id="about" class="container-fluid text-center">
             <div class="row">
                 <div class="col-sm-2"></div>        
-                <div class="col-sm-7" style="margin: 30px 0;"><p style="font-size:3em; font-family: 'Saira', sans-serif;">[Express]</p></div>        
+                <div class="col-sm-7" style="margin: 30px 0;"><p style="font-size:3em; font-family: 'Saira', sans-serif;">[Deepfake]</p></div>        
                 <div class="col-sm-3"></div>
             </div>
         </div>
@@ -49,24 +49,60 @@
                         </div>
                     </div>
 
-                    <br><div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;Express를 사용한 가장 단순한 Sample</div>
-                    <div class="ui warning message" style="text-align: left !important; width: 60%; margin: 0 auto;">
+                    <br><div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;기본적으로 Deepfake는 2개의 Video를 Input으로 받아 합성된 1개의 Video를 생성한다. 
+                    <br><br><i class="fas fa-square"></i>&emsp;3가지의 기능으로 구성된다. Extract, Train, Convert이다.</div>
+                    <br><div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;Extract</div>
+
+                    <div class="ui warning message" style="text-align: left !important; width: 80%; margin: 0 auto;">
                         <i class="fas fa-code" style="float:right;"></i><br>
 
-                        <p><pre style="color:#0004ffab;">// Express 기본 모듈 불러오기</pre></p>
-                        var express = require('express')<br>
-                        , http = require('http');<br><br>
+                        <p><pre style="color:#0004ffab;">// 첫 번째 입력받은 영상에서 Face alignment를 한 후 MTCNN으로 얼굴 데이터를 추출하는 명령어이다.</pre></p>
+
+                        python faceswap.py extract –i [Video Location] -o [Extracted Images Directory Location]<br><br>
+
+                        <p><pre style="color:#0004ffab;">// 같은 방식으로 또 다른 영상에서도 얼굴 데이터를 추출한다.</pre></p>
+
+                        <p><pre style="color:#0004ffab;">// Extract에 다양한 옵션들을 제공한다 <i class="fas fa-arrow-right"></i> python faceswap.py extract -h </pre></p>
+                    </div><br><br>
+
+                    <br><div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;Train</div>
+
+                    <div class="ui warning message" style="text-align: left !important; width: 80%; margin: 0 auto;">
+                        <i class="fas fa-code" style="float:right;"></i><br>
+
+                        <p><pre style="color:#0004ffab;">// 두 영상으로부터 추출된 얼굴 데이터를 Train한다.</pre></p>
+
+                        <p><pre style="color:#0004ffab;">// 얼굴이 자연스럽게 합성되도록 Model을 생성하는 단계이다. 시간이 오래 소요된다.</pre></p>
+
+                        python faceswap.py train –A [Video1 Extracted Images Location] -B [Video2 Extracted Images Location] -m [Model Location]<br><br>
+                                                
+                        <p><pre style="color:#0004ffab;">// Train에도 다양한 옵션들을 제공한다 <i class="fas fa-arrow-right"></i> python faceswap.py train -h </pre></p>
+                    </div><br><br>
+
+                    <br><div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;Convert</div>
+
+                    <div class="ui warning message" style="text-align: left !important; width: 80%; margin: 0 auto;">
+                        <i class="fas fa-code" style="float:right;"></i><br>
+
+                        <p><pre style="color:#0004ffab;">// 생성된 Model을 가지고 얼굴을 합성하는 단계이다.</pre></p>
+
+                        python faceswap.py convert -i [Video1 Location] -o [Output Video Location] -m [Created Model Location]<br><br>
+                                                
+                        <p><pre style="color:#0004ffab;">// Output Directory에 Converted Images이 생성되는 것을 확인한다.</pre></p>
                         
-                        <p><pre style="color:#0004ffab;">// 익스프레스 객체 생성</pre></p>
-                        var app = express();<br><br>
+                        <p><pre style="color:#0004ffab;">// Train에도 다양한 옵션들을 제공한다 <i class="fas fa-arrow-right"></i> python faceswap.py convert -h</pre></p>
+                    </div><br><br>
 
-                        <p><pre style="color:#0004ffab;">// 기본 포트를 app 객체에 속성으로 설정</pre></p>
-                        app.set('port', process.env.PORT || 3000);<br><br>
+                    <br><div class="shadow p-3 mb-5 bg-white rounded" style="color:#000"><i class="fas fa-square"></i>&emsp;FFMPEG</div>
 
-                        <p><pre style="color:#0004ffab;">// Express 서버 시작</pre></p>
-                        http.createServer(app).listen(app.get('port'), function(){<br>
-                        &emsp;&emsp;console.log('익스프레스 서버를 시작했습니다 : ' + app.get('port'));<br>
-                        });
+                    <div class="ui warning message" style="text-align: left !important; width: 80%; margin: 0 auto;">
+                        <i class="fas fa-code" style="float:right;"></i><br>
+
+                        <p><pre style="color:#0004ffab;">// Convert에서 Output Directory에 합성된 Image들이 생성된 것을 확인한 후</pre></p>
+                        <p><pre style="color:#0004ffab;">// 이 Image들을 Image to Video 과정을 통해 최종 결과 Video를 얻어야 한다.</pre></p>
+                        <p><pre style="color:#0004ffab;">// 이 과정에서 ffmpeg을 사용한다.</pre></p>
+
+                        ffmpeg –i [Output Images] -c:v libx264 -vf "fps=25,format=yuv420p" [Output Video]
                     </div><br><br>
 
                     <div class="ui form">
@@ -74,7 +110,7 @@
                             <div class="header" style="text-align:left">References</div><br>
                             <ul class="list">
                                 <li>국립 부경대학교 IT융합응용공학과 윤요섭 교수님&emsp;<i class="fas fa-chevron-right"></i>&emsp;오픈소스소프트웨어 강의 中</li>
-                                <li><a href="https://expressjs.com/">Express</a></li>
+                                <li><a href="https://github.com/deepfakes/faceswap">Deepfake</a></li>
                             </ul>
                         </div>
                     </div>
